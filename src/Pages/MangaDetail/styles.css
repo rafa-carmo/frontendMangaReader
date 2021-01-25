@@ -1,0 +1,147 @@
+#page-container {
+    z-index: 2  ;
+
+}
+
+
+.background-mask {
+    width: 100vw;
+    height:320px;
+    position: absolute;
+    display: flex;
+    margin:0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.background-manga {
+    width: 100vw;
+    height:320px;
+    position: absolute;
+    display: flex;
+    margin:0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.name-smart {
+    display:none;
+}
+
+.description-manga {
+    margin-top: 15rem;
+
+    height: 500px;
+    display:flex;
+
+
+}
+
+.left-content {
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.left-content img {
+    width: 200px;
+    height: 290px;
+}
+
+.checkButtons{
+    width:78%;
+    display:flex;
+    justify-content: space-between;
+
+}
+.checkButtons svg {
+    width: 90px;
+    
+}
+
+.info {
+    width:78%;
+    margin-top: 40px;
+}
+
+.info a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.description{
+    margin:0;
+    margin-top: 13%;
+    width: 110rem;
+}
+
+.description p {
+    text-indent: 40px;
+    margin-top: 20px;
+    text-align: justify;
+    font-size: 1.9rem;
+}
+
+.chapters-list {
+    margin-top:50px;
+    width: 100%;
+    height: 100hw;
+    
+}
+.chapters-list ul {
+    list-style: none;
+    
+}
+.chapters-list ul li {
+    margin-top: 5px;
+    display:flex;
+    justify-content: space-between;
+    
+}
+
+
+@media only screen and (max-device-width: 900px) {
+    .page-container {
+        display: flex;
+       flex-direction: row;
+    
+    }
+
+    .background-mask {
+        height:200px;
+    }
+    
+    .background-manga {
+        height:200px;
+    }
+    
+    .name-smart{
+        display: flex;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .description-manga{
+
+        flex-direction: column;
+        align-items: center;
+    }
+    .description {
+        width: 80vw;
+
+    }
+    .description h2 {
+        display:none;
+    }
+
+    .left-content {
+        width: 80vw;
+        
+        display: flex;
+        flex-direction: column;
+    }
+}
