@@ -11,6 +11,7 @@ import Capitulos from './component/capitulos'
 
 import api from '../../services/api'
 import dir from '../../services/dir'
+import mangas from '../Home/component/mangas';
 
 
 
@@ -47,19 +48,19 @@ function MangaDetail(){
     const params = useParams<params>()    
 
     const id = params.id
-    
+    const headers = {
+        "Authorization": localStorage.getItem('Authorization'),
+   }
     useEffect(() => {
 
  
-        const headers = {
-             "Authorization": localStorage.getItem('Authorization'),
-        }
+  
 
 
         api.get(`manga/${params.id}`, {
             headers})
         .then(response => {
-            if (response.data.capitulos == '0') {
+            if (response.data.capitulosRestantes == '0') {
                 setView(true)
             }
             return setInfoManga(response.data);
@@ -67,13 +68,26 @@ function MangaDetail(){
       },[control])
 
 
-      function handleView() {
-          api.post
-      }
+
 
       if(!infoManga){
         return <p>  </p>
       }
+
+
+
+      const handleView = async  ( e:any) => {
+
+
+
+         await api.put(`/mangas/view/${infoManga.id}`,{}, {
+            headers})
+         .then(() => setView(!view))
+         .catch(err => console.log(err))
+         
+         return
+     }
+    
 
     return(
         
@@ -95,7 +109,7 @@ function MangaDetail(){
                     <img src={`${dir}imagens/mangas/capas/${infoManga.name}.jpg`} alt="capa"/>
                     <h2 className="name-smart"> {infoManga.name}  </h2>
                     <div className="checkButtons">
-                    <FiCheck color={view ? 'green' : 'black'} size={20} onClick={}/> <FiHeart size={20} />
+                    <FiCheck color={view ? 'green' : 'black'} size={20} onClick={handleView}/> <FiHeart size={20} />
                     </div>
 
                     <div className="info">

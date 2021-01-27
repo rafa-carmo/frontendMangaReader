@@ -1,4 +1,5 @@
 import React,  { useState, useEffect } from 'react';
+import { FiCheck } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../../services/api'
@@ -23,6 +24,7 @@ interface manga {
     }>;
     banner: string;
     generos: object;
+    capitulosRestantes: string;
     artista: string;
     outrosTitulos: string;
     rate: number;
@@ -75,6 +77,12 @@ export default () => {
                     
                     mangas.map( (manga: manga) => { 
 
+                        let cap =  manga.capitulosRestantes == undefined ?  manga.totalCapitulos  : manga.capitulosRestantes
+                        let check =  <FiCheck color={'white'} size={20}/>
+ 
+                        const displayCap = manga.capitulosRestantes == '0' ?  check: cap
+
+                        console.log(displayCap, manga.id)
                         return(
                         <Link key = {manga.id} onClick={handleClick} to={`/${manga.id}`}>
                         <li>
@@ -82,7 +90,7 @@ export default () => {
 
                             <div className="manga-new" >
 
-                        <h2 className="capitulos"> {manga.totalCapitulos}</h2>
+                                <h2 className="capitulos" > {displayCap} </h2>
 
 
                                 <img alt={manga.name} src={`${dir}imagens/mangas/capas/${manga.name}.jpg`} />
